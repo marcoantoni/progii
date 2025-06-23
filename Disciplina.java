@@ -12,9 +12,19 @@ class Disciplina {	// definição da classe
 	public void mostrarDisciplina(){
 		System.out.printf("Disciplina: %s \n", nome);	// exibe o nome da disciplina
 		System.out.printf("Professor: %s \n", professor);	// exibe o do professor responsável pela disciplina
-		System.out.printf("Ano: %dº ano - Carga horária: %d horas", ano, horas);	// exibe em qual ano e a carga horária da disciplina
-		// TAREFA PARA FAZER EM CASA:  escrever o eixo da disicplina conforme o código (atributo tipo), conforme os códigos indicados acima
+		System.out.printf("Ano: %dº ano - Carga horária: %d horas \n", ano, horas);	// exibe em qual ano e a carga horária da disciplina
 		
+		// TAREFA PARA FAZER EM CASA:  escrever o eixo da disicplina conforme o código (atributo tipo), conforme os códigos indicados acima
+		if (tipo == 1) 
+			System.out.printf("Área da disciplina: Exatas");
+		else if (tipo == 2) 
+			System.out.printf("Área da disciplina: Humanas");
+		else if (tipo == 3) 
+			System.out.printf("Área da disciplina: Exatas");
+		else 
+			System.out.printf("Área da disciplina: Não informada");
+			
+		System.out.printf("\n-----------------\n");
 	}
 	
 
@@ -23,22 +33,29 @@ class Disciplina {	// definição da classe
 	 * É necessário receber como parametro, os dados que irão ser realizados
 	 * Não foi inicializado o tipo da disciplina, pois esta é uma TAREFA para ser feita em casa
 	 */
-	public Disciplina(String professorDis, int cHoraria, int anoCur, String disciplina){
+	public Disciplina(String professorDis, int cHoraria, int anoCur, String disciplina, int tipo){
 			
 			professor = professorDis;	// armazena o valor do parametro professorDis dentro do atributo professor
 			horas = cHoraria;
 			nome = disciplina;
-			ano = anoCur;	
+			ano = anoCur;
+			this.tipo = tipo; // this é usado para resolver o problema de ambuiguidade entre o nome do atributo e parametro
+			// quando há o this, sempre refere-se ao atributo
 	}
 
 	public static void main(String[] args){
-		Disciplina progii = new Disciplina("Marco", 66, 2, "Programação II");	// cria uma disciplina
 		
-		Disciplina discPort = new Disciplina("Gustavo", 100, 2, "Lingua portuguesa e literatura"); // cria outra disciplina
+		Disciplina progii = new Disciplina("Marco", 66, 2, "Programação II", 1);	// cria uma disciplina
+		
+		Disciplina discPort = new Disciplina("Gustavo", 100, 2, "Lingua portuguesa e literatura", 2); // cria outra disciplina
+		
+		Disciplina bd = new Disciplina("Fábio", 66, 2, "Banco de dados", 1);
 		
 		progii.mostrarDisciplina();	// mostra a primeira disciplina criada
 		
 		discPort.mostrarDisciplina();	// mostra a segunda disciplina criada
+		
+		bd.mostrarDisciplina();
 	}
 
 }
