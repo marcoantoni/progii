@@ -7,22 +7,31 @@ class Data {
 	/* Os três atributos são obrigatórios */
 	
 	public Data (int dia, int mes, int ano) {
+		
+		// em 04/08 - foram adicionados valores default quando os passados valores inválidos para os atributos: Isso é para não aparecer o dia "0", o mês "0" e o ano "0" ao inserir um valor inválido dentro da data
+		
 		// testando se o dia é está num interlado válido
-		if (dia >= 1 && dia <= 31)
+		if (dia >= 1 && dia <= 31){
 			this.dia = dia;
-		else 
+		} else {
 			System.out.printf("Dia inválido");
+			this.dia = 1;	// inicializando o dia com um valor padrão caso seja inválido
+		}
 			
-		if (mes >= 1 && mes <= 12)
+		if (mes >= 1 && mes <= 12){
 			this.mes = mes;
-		else 
+		} else {
 			System.out.printf("Mês inválido");
+			this.mes = 1;	// inicializando o mes com um valor padrão caso seja inválido
+		}
 		
 		// segundo as regras de negócio, a classe não permitirá datas anteriores a 1900
-		if (ano >= 1900) 
+		if (ano >= 1900) {
 			this.ano = ano;
-		else
+		} else{
 			System.out.printf("Ano inválid");
+			this.ano = 1970;	// iniciando o ano com um valor padrão caso seja inválido
+		}
 	}
 	
 	// método para escrever a data de maneira abreviada
