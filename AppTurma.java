@@ -27,6 +27,20 @@ class AppTurma {
 		turma[2] = al3;	// adicionando o aluno3
 		turma[3] = al4;	// adicionando o aluno4
 		turma[4] = al5;	// adicionando o aluno5
+		
+		// criando um laço de repetição para exibir os alunos
+		
+		// turma.length retorna a quantidade de elementos do array
+		for (int i = 0; i < turma.length; i++){
+			// validação para não mostrar nenhum erro na hora de executar
+			// só vai tentar mostrar o aluno, caso tenho algo armazenado no array
+			if (turma[i] != null){
+				turma[i].mostrarAluno();
+			}
+		}
+		
+		
+		
 	}
 
 }
