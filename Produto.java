@@ -1,47 +1,85 @@
-class Produto {
-	float pCompra;
-	float pVenda;
-	String nome;
-
-	// método construtor que torna obrigatório informar o nome do produto e o preço de compra
-	// definido o nome "preco", pois como só sera recebido um valor, facilita o entendimento
-	public Produto(String nome, float preco) {
+// correção do exercício de encapsulamento da classe Produto
+public class Produto {
+	private String nome;
+	private float pCompra;
+	private float pVenda;
+	private int codBarras;
+	
+	public void setNome(String nome) {
 		
-		// validando se o nome foi preenchido
-		// length testa a quantidade de caracteres de uma string
-		if (nome.length() > 3) {
-			this.nome = nome;	// armazenando o nome do produto no atributo da classe
+		// regra para testar a quantidade de letras da string
+		if (nome.length() >= 5){
+			this.nome = nome;
 		} else {
-			System.out.printf("Nome do produto é inválido \n");
+			System.out.printf("Nome de produto inválido\n");
 		}
+	}
 	
-		// validando o preço de compra
-		if (preco > 0){
-			this.pCompra = preco;	// armazena o valor do parametro preco no atributo pCompra
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setPCompra(float preco) {
 		
-			pVenda = pCompra * 1.3f; // inicializando o preço de venda (acrescenta 30% em relação ao preço de compra)
-		
+		if (preco > 0) {
+			pCompra = preco;
 		} else {
-			System.out.printf("Preço de compra é inválido \n");
+			System.out.printf("Preço de compra inválido\n");
+		}	
+	}
+	
+	public float getPCompra() {
+		return pCompra;
+	}
+	
+	public void setPVenda(float preco) {
+		
+		if (preco > 0) {
+			pVenda = preco;
+		} else {
+			System.out.printf("Preço de venda inválido\n");	
+		}
+	}
+	
+	public float getPVenda() {
+		return pVenda;
+	}
+	
+	// pelas regras de negócio, não haverá método get e set para o codBarras
+	// o código de barras não irá mudar, portanto, não precisa um método para tal
+	// não foi identificado nenhuma situação que justifique a necessidade de ter um médoto getCodBarras
+	
+	public Produto(String nome, float pCompra, int codBarras){
+		
+		setNome(nome);
+		setPCompra(pCompra);
+		
+		// é a mesma coisa que a linha acima
+		// setPVenda(pCompra * 1.3f);
+		
+		// resolução do bug: faltou a referencia this
+		pVenda = this.pCompra * 1.3f;
+		
+		// validação do cod. barras
+		
+		if (codBarras > 0){
+			this.codBarras = codBarras;
+		} else {
+			System.out.printf("Código de barras inválido\n");
 		}
 		
 	}
 	
-	// método para escrever na tela as informações do produto
-	public void mostrarProduto() {
-		System.out.printf("Produto: %s \n", nome);
-		System.out.printf("Preço de compra: R$ %.2f \n", pCompra);
-		System.out.printf("Preço de venda: R$ %.2f \n", pVenda);
-		System.out.printf("------------------\n");
-	}
-	
-	public static void main (String args[]) {
+	public void mostrar(){
+		System.out.printf("Cód: %d - %S \n", codBarras, nome);
 		
-		Produto p1 = new Produto("Pepsi", 3.2f);
-		Produto p2 = new Produto("Doritos", 8.49f);
-	
-		p1.mostrarProduto();
-		p2.mostrarProduto();
+		// colocando uma mensagem diferente para quando foi exibir um preço inválido não mostrar o valor 0 (zero)
+		if (pVenda > 0) {
+			System.out.printf("Preço: R$ %.2f \n", pVenda);
+		} else {
+			System.out.printf("Preço: Não foi informado. \n");
+		}
+		
+		System.out.printf("--------------\n");
 	}
-	
 }
