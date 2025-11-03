@@ -1,6 +1,6 @@
 class Professor extends Pessoa {
 	
-	// declaração dos atributos
+	// declaração dos atributos da classe
 	private String vinculo;
 	private float salario;
 	private int matricula;
@@ -27,10 +27,15 @@ class Professor extends Pessoa {
 		
 		Professor p1 = new Professor();
 		
+		// o código está sem um método construtor, por isso é necessário inicializar os atributos de maneira manual
+		// já que a superclasse possui os métodos setters, vamos usar ele para atribuir os valore 
+		 
 		p1.setNome("Sofia");
 		p1.setCPF("123.432.234.48");
 		p1.setNascimento(new Data(14, 1, 1999) );
 		
+		// inicializando diretamente os atributos da classe Professor
+		// lembrar que acessar os atributos de maneira direta não é o recomendado.
 		p1.vinculo = "40 horas";
 		p1.salario = 4123.89f;
 		p1.matricula = 1210393;
@@ -39,6 +44,7 @@ class Professor extends Pessoa {
 		p1.mostrarProfessor();
 		
 		// print no atributo nome
+		//System.out.printf("Nome: %s \n", p1.nome() ); // isso funciona, pois o atributo na superclasse é protected
 		//System.out.printf("Nome: %s \n", p1.getNome() );
 		
 	}
