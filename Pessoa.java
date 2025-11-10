@@ -4,7 +4,13 @@ public class Pessoa {
 	protected String cpf;
 	protected Data nascimento;
 	
-	// código sem método construtor
+	// método construtor
+	// os atributos nome, cpf e nascimento serão obrigatórios
+	public Pessoa(String nome, String cpf, Data nasc) {
+		setNome(nome);
+		setCPF(cpf);
+		setNascimento(nasc);
+	}
 	
 	/* Criação dos métodos sets para atribuir valores*/
 	
